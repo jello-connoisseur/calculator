@@ -1,3 +1,35 @@
+
 #container{
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    background-color:rgb(245, 234, 192);
+    margin: 100px;
+    padding: 2px;
+    border: solid 2px;
+    border-radius: 20px;
+    width: 230px;
+    border-color:rgb(74, 5, 139);
+
+}
+.output{
+    margin: 2px;
+    height: 70px;
+    width: 200px;
+    border: solid 2px;
+    border-radius: 20px;
+    border-color:blueviolet;
+
+}
+.numbers{
+    width: 50px;
+    height: 60px;
+    font-size: 20px;
+    border-radius: 20px;
+    margin: 2px;
+    background-color:rgb(245, 234, 192);
+    border-color:blueviolet;
+
 }

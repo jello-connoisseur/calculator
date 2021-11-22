@@ -24,3 +24,19 @@ function operate(operator, a, b){
         return divide(a,b);
     } else return "not valid operator";
 }
+
+const btn = document.querySelectorAll('.numbers');
+const output = document.querySelector('.output');
+const content = document.createElement('div');
+content.classList.add('content');
+
+btn.forEach((button) => {
+    button.addEventListener('click',(e) =>{
+        content.textContent += e.target.textContent;
+        output.appendChild(content);
+
+    })
+})
+function display(){
+
+}
