@@ -54,8 +54,10 @@ op.forEach((operator) => {
             array[array.length-2] === '+' ||
             array[array.length-2] === 'x' ||
             array[array.length-2] === '÷')){
-            let calculation = operate(array[array.length-3], array[array.length-1], array[array.length-2])
-            array.push(calculation);
+
+
+                let calculation = operate(array[array.length-3], array[array.length-1], array[array.length-2]);
+                array.push(calculation);
         }
 
         //store the operator
@@ -93,6 +95,12 @@ equals.addEventListener('click', (e) => {
 });
 
 
+const clear = document.querySelector('.clear');
+clear.addEventListener('click', () => {
+    array = [];
+    content.textContent = '';
+    console.log(array);
+});
 // btn.forEach((button) => {
 //     button.addEventListener('click',(e) =>{
 //         content.textContent += e.target.textContent;
