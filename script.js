@@ -34,6 +34,7 @@ let array = [];
 
 btn.forEach((button) => {
     button.addEventListener('click',(e) =>{
+        content.textContent ='';
         content.textContent += e.target.textContent;
         output.appendChild(content);
     });
@@ -42,24 +43,44 @@ btn.forEach((button) => {
 
 const op = document.querySelectorAll('.operator');
 let calculate = "";
+
+//NEED TO FIX THIS! doesn't display correctly
 op.forEach((operator) => {
     operator.addEventListener('click', (e) => {
-        //store the operator chosen
-        calculate = e.target.textContent;
         //store the desired number in the array
         array.push(content.textContent);
+
+        content.textContent += e.target.textContent;
+        output.appendChild(content);
+
+        //store the operator chosen
+        calculate = e.target.textContent;
+
+
         //clear window and reset number
         content.textContent = '';
+
         console.log(array);
         // console.log(operate(displayedContent, e.target.textContent, displayedContent));
 
     });
 })
 
+
+
+//equals
 const equals = document.querySelector('.equals');
 
 equals.addEventListener('click', () => {
-    console.log(operate(array[array.length-2], array[array.length-1], calculate));
+    array.push(content.textContent);
+
+    //push the result into the array
+
+    array.push(operate(array[array.length-2], array[array.length-1], calculate));
+    content.textContent = '';
+    content.textContent = array[array.length-1];
+
+    console.log(array);
 });
 
 
