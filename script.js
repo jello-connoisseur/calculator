@@ -34,7 +34,6 @@ let array = [];
 
 btn.forEach((button) => {
     button.addEventListener('click',(e) =>{
-        content.textContent ='';
         content.textContent += e.target.textContent;
         output.appendChild(content);
     });
@@ -50,15 +49,24 @@ op.forEach((operator) => {
         //store the desired number in the array
         array.push(content.textContent);
 
-        content.textContent += e.target.textContent;
-        output.appendChild(content);
+        if (array.length >= 3 && (
+            array[array.length-2] === '-' ||
+            array[array.length-2] === '+' ||
+            array[array.length-2] === 'x' ||
+            array[array.length-2] === '÷')){
+            let calculation = operate(array[array.length-3], array[array.length-1], array[array.length-2])
+            array.push(calculation);
+        }
 
-        //store the operator chosen
-        calculate = e.target.textContent;
+        //store the operator
+        array.push(e.target.textContent);
+        output.appendChild(content);
+        content.textContent = '';
+
 
 
         //clear window and reset number
-        content.textContent = '';
+        
 
         console.log(array);
         // console.log(operate(displayedContent, e.target.textContent, displayedContent));
@@ -71,12 +79,13 @@ op.forEach((operator) => {
 //equals
 const equals = document.querySelector('.equals');
 
-equals.addEventListener('click', () => {
+equals.addEventListener('click', (e) => {
     array.push(content.textContent);
+    array.push(e.target.textContent);
 
     //push the result into the array
 
-    array.push(operate(array[array.length-2], array[array.length-1], calculate));
+    array.push(operate(array[array.length-4], array[array.length-2], array[array.length-3]));
     content.textContent = '';
     content.textContent = array[array.length-1];
 
